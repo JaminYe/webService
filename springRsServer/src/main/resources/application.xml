@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Jamin
+  Date: 2019/11/23
+  Time: 18:40
+  Desc: 
+  -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+    <jaxrs:server id="userServer" address="/userServer">
+        <jaxrs:serviceBeans>
+            <bean class="com.jamin.server.service.impl.UserServiceImpl"/>
+            <bean class="com.jamin.server.entity.User"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:outInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+        </jaxrs:outInterceptors>
+        <jaxrs:inInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+        </jaxrs:inInterceptors>
+        <jaxrs:providers>
+            <bean class="com.jamin.server.filter.CORSFilter"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+</beans>

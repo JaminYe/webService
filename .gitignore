@@ -1,0 +1,8 @@
+# Project exclude paths
+/client/target/
+/server/target/
+/springClient/target/
+/springRsServer/target/
+/springService/target/
+/wSRsServer/target/
+/wSSClient/target/
